@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  /* Brand Palette */
+  --color-brand-primary: #0a0a0a; /* Very Dark Gray/Black (Fondo principal) */
+  --color-brand-secondary: #171717; /* Dark Slate (Tarjetas) */
+  --color-brand-accent: #2563eb; /* Blue (Acentos base) */
+  --color-brand-accent-bright: #3b82f6; /* Light Blue (Hover y glows) */
+  --color-brand-accent-glow: rgba(37, 99, 235, 0.4);
+  
+  --color-brand-gray: #a4a6a9; /* Gray/Silver (Textos secundarios) */
+  
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-primary);
+  color: #ffffff;
+}
+
+/* Custom Utilities for Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 80s linear infinite;
+}
