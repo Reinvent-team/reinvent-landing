@@ -1,41 +1,33 @@
 {
-  "name": "06-reinvent",
-  "module": "index.ts",
-  "type": "module",
+  "name": "06-reinvent-landing",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "concurrently \"bun run --hot src/server/index.ts\" \"vite\"",
+    "dev": "vite",
     "build": "tsc && vite build",
-    "db:generate": "drizzle-kit generate",
-    "db:push": "drizzle-kit push"
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.101.1",
+    "@tanstack/react-router": "^1.170.16",
+    "framer-motion": "^12.42.0",
+    "lucide-react": "^1.21.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-icons": "^5.6.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/router-plugin": "^1.168.18",
-    "@types/bun": "latest",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
-    "concurrently": "^10.0.3",
-    "drizzle-kit": "^0.31.10",
     "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
     "vite": "^8.1.0"
   },
   "peerDependencies": {
     "typescript": "^5"
-  },
-  "dependencies": {
-    "@tanstack/react-query": "^5.101.1",
-    "@tanstack/react-router": "^1.170.16",
-    "drizzle-orm": "^0.45.2",
-    "framer-motion": "^12.42.0",
-    "hono": "^4.12.27",
-    "lucide-react": "^1.21.0",
-    "postgres": "^3.4.9",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-icons": "^5.6.0",
-    "zod": "^4.4.3"
   }
 }

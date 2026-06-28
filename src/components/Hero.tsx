@@ -13,7 +13,7 @@ export function Hero() {
 			</div>
 
 			{/* Ambient Light / Glowing orbs - Responsive sizing */}
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] md:w-[70vw] h-[100vw] md:h-[50vw] rounded-full bg-brand-accent/15 blur-[150px] md:blur-[250px] pointer-events-none mix-blend-screen animate-pulse duration-[8000ms]"></div>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] md:w-[70vw] h-[100vw] md:h-[50vw] rounded-full bg-[#2563eb]/15 blur-[150px] md:blur-[250px] pointer-events-none mix-blend-screen animate-pulse duration-[8000ms]"></div>
 			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[50vw] h-[70vw] md:h-[40vw] rounded-full bg-white/5 blur-[120px] md:blur-[200px] pointer-events-none mix-blend-screen"></div>
 			
 			{/* Tech Grid Pattern */}
@@ -31,8 +31,8 @@ export function Hero() {
 					</span>
 				</h1>
 
-				<p className="text-base sm:text-lg md:text-2xl text-brand-gray/90 mb-10 md:mb-12 max-w-[90%] md:max-w-3xl mx-auto font-light leading-relaxed">
-					Diseño de vanguardia y arquitectura de software escalable para convertir tus ideas en <strong className="text-white font-medium">soluciones reales de alto impacto.</strong>
+				<p className="text-base sm:text-lg md:text-2xl text-gray-200 mb-10 md:mb-12 max-w-[90%] md:max-w-3xl mx-auto font-light leading-relaxed">
+					Diseño de vanguardia y arquitectura de software escalable para convertir tus ideas en soluciones reales de alto impacto.
 				</p>
 
 				<div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -54,12 +54,12 @@ export function Hero() {
 						</span>
 					</button>
 					
-					<button
-						type="button"
+					<a
+						href="http://localhost:5174"
 						className="w-full sm:w-auto px-8 md:px-10 py-4 rounded-full font-semibold border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all text-white backdrop-blur-sm text-base md:text-lg flex items-center justify-center"
 					>
 						Ver Portafolio
-					</button>
+					</a>
 				</div>
 			</div>
 		</section>

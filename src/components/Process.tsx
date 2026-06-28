@@ -15,7 +15,7 @@ export function Process() {
 					<h2 className="text-[2.5rem] md:text-5xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight">
 						Nuestro <span className="text-brand-accent">Proceso</span>
 					</h2>
-					<p className="text-brand-gray max-w-2xl mx-auto text-base md:text-lg font-light px-4">
+					<p className="text-brand-gray max-w-2xl mx-auto text-base md:text-lg font-light px-4 text-balance">
 						Metodología ágil y transparente para transformar ideas en productos digitales escalables.
 					</p>
 				</div>
@@ -44,7 +44,7 @@ export function Process() {
 						}
 					].map((step, idx) => (
 						<div key={idx} className="flex flex-col items-center text-center relative z-10 group bg-brand-primary/80 md:bg-transparent p-6 md:p-0 rounded-3xl md:rounded-none border md:border-none border-white/5 shadow-xl md:shadow-none">
-							<div className="w-16 h-16 rounded-full bg-brand-secondary border border-white/10 flex items-center justify-center text-xl font-bold mb-6 md:mb-8 text-white group-hover:scale-110 group-hover:bg-brand-accent/10 group-hover:text-brand-accent-bright group-hover:border-brand-accent/50 transition-all duration-300 shadow-lg">
+							<div className="relative w-16 h-16 rounded-full bg-brand-secondary border border-white/10 flex items-center justify-center text-xl font-bold mb-6 md:mb-8 text-white group-hover:scale-110 group-hover:bg-brand-accent/10 group-hover:text-brand-accent-bright group-hover:border-brand-accent/50 transition-all duration-300 shadow-lg before:absolute before:inset-0 before:-z-10 before:bg-brand-secondary before:rounded-full">
 								{step.num}
 							</div>
 							<h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white">{step.title}</h3>

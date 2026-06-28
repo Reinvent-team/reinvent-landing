@@ -28,7 +28,7 @@ export function TechStack() {
 			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-32 bg-brand-accent/5 blur-[80px]"></div>
 			
 			<div className="max-w-[100vw] mx-auto relative z-10">
-				<h2 className="text-[2rem] md:text-4xl font-extrabold text-center tracking-tight mb-8 md:mb-12 text-white px-4">
+				<h2 className="text-4xl md:text-5xl font-extrabold text-center tracking-tight mb-8 md:mb-12 text-white px-4">
 					Stack <span className="text-brand-accent">Tecnológico</span>
 				</h2>
 				

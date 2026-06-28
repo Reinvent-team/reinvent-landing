@@ -1,10 +1,10 @@
 import {
-	ArrowUpRight,
 	CheckCircle2,
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const MOCK_PROJECTS = [
 	{
@@ -45,7 +45,7 @@ export function Projects() {
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 				<div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-12 gap-6 md:gap-10">
 					<div>
-						<h2 className="text-[2.5rem] md:text-4xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
+						<h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
 							Proyectos <span className="text-brand-accent">&</span> Producción
 						</h2>
 						<p className="text-gray-400 text-base md:text-lg max-w-xl font-light">
@@ -77,39 +77,49 @@ export function Projects() {
 					</div>
 				</div>
 
-				<div className="relative flex items-center justify-center h-[560px] md:h-[500px]">
-					<div className="flex items-center justify-center gap-4 md:gap-6 w-full h-full overflow-hidden perspective-1000">
+				<div className="relative flex items-center justify-center h-[560px] md:h-[500px] overflow-hidden w-full max-w-[100vw]">
+					<div className="flex items-center justify-center gap-4 md:gap-8 w-full h-full perspective-1000 px-4">
 						{MOCK_PROJECTS.map((project, index) => {
 							const isActive = index === activeIndex;
-							const isPrev = index === activeIndex - 1;
-							const isNext = index === activeIndex + 1;
-
-							if (!isActive && !isPrev && !isNext) return null;
+							// Determinar si debe ser visible en pantallas pequeñas
+							const isVisibleOnMobile = isActive || (index === activeIndex - 1 && activeIndex > 0) || (index === activeIndex + 1 && activeIndex < MOCK_PROJECTS.length - 1);
 
 							return (
-								<div
+								<motion.div
 									key={project.id}
-									className={`transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] glass-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer shrink-0
-										${
-											isActive
-												? "w-[90vw] sm:w-[450px] h-[540px] md:h-[480px] scale-100 opacity-100 z-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-brand-accent/30"
-												: "w-[280px] md:w-[300px] h-[380px] md:h-[400px] scale-90 opacity-40 z-10 hidden md:flex hover:opacity-60 hover:scale-95"
+									layout="position"
+									initial={false}
+									animate={{
+										opacity: isActive ? 1 : 0.4,
+										scale: isActive ? 1 : 0.9,
+										zIndex: isActive ? 20 : 10,
+										display: !isVisibleOnMobile && typeof window !== 'undefined' && window.innerWidth < 768 ? 'none' : 'flex'
+									}}
+									transition={{ type: "spring", stiffness: 400, damping: 40, mass: 0.8 }}
+									className={`glass-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer shrink-0 will-change-transform
+										${isActive
+											? "w-[85vw] sm:w-[450px] h-[520px] md:h-[480px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-brand-accent/40"
+											: "w-[0px] md:w-[300px] h-[0px] md:h-[400px] border-white/10 hover:opacity-80"
 										}
 									`}
 									onClick={() => setActiveIndex(index)}
 								>
 									{/* Image Container */}
-									<div className="h-[50%] md:h-[55%] w-full relative flex items-center justify-center overflow-hidden border-b border-white/5 group/img">
-										<img 
-											src={project.image} 
-											alt={project.title} 
-											className="absolute inset-0 w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-1000 grayscale-[40%] group-hover/img:grayscale-0"
+									<div className="h-[50%] md:h-[55%] w-full relative flex items-center justify-center overflow-hidden border-b border-white/5 pointer-events-none">
+										<motion.img
+											src={project.image}
+											alt={project.title}
+											className="absolute inset-0 w-full h-full object-cover"
+											animate={{
+												scale: isActive ? 1.05 : 1,
+												filter: isActive ? 'grayscale(0%)' : 'grayscale(50%)'
+											}}
+											transition={{ duration: 0.5 }}
 										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-brand-secondary via-transparent to-transparent z-10"></div>
 									</div>
 
 									{/* Content */}
-									<div className="p-6 md:p-8 flex-1 flex flex-col bg-brand-secondary/90">
+									<div className="p-6 md:p-8 flex-1 flex flex-col bg-brand-secondary/90 pointer-events-none">
 										<div className="flex flex-wrap gap-2 mb-4">
 											{project.tags.map((tag) => (
 												<span
@@ -123,44 +133,36 @@ export function Projects() {
 										<h3 className="font-bold text-2xl md:text-3xl mb-3 text-white">
 											{project.title}
 										</h3>
-										{isActive && (
-											<p className="text-sm md:text-base text-gray-400 mb-6 flex-1 leading-relaxed font-light">
+
+										<motion.div
+											animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0 }}
+											className="overflow-hidden"
+										>
+											<p className="text-sm md:text-base text-gray-400 mb-6 flex-1 leading-relaxed font-light pointer-events-auto">
 												{project.description}
 											</p>
-										)}
+										</motion.div>
 
 										<div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
 											<div className="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-400">
 												<CheckCircle2 size={18} className="text-brand-accent" />
 												<span>{project.status}</span>
 											</div>
-											{isActive && (
-												<button
-													type="button"
-													className="group flex items-center gap-2 text-brand-accent text-sm md:text-base font-bold hover:text-brand-accent-bright transition-colors"
-												>
-													Explorar
-													<ArrowUpRight
-														size={18}
-														className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-													/>
-												</button>
-											)}
 										</div>
 									</div>
-								</div>
+								</motion.div>
 							);
 						})}
 					</div>
 				</div>
 
 				<div className="mt-10 md:mt-12 text-center">
-					<button
-						type="button"
-						className="w-full sm:w-auto px-8 md:px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all text-white backdrop-blur-sm text-base md:text-lg"
+					<a
+						href="http://localhost:5174"
+						className="inline-block w-full sm:w-auto px-8 md:px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all text-white backdrop-blur-sm text-base md:text-lg"
 					>
 						Ver portafolio completo
-					</button>
+					</a>
 				</div>
 			</div>
 		</section>

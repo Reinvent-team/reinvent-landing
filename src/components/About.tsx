@@ -12,14 +12,14 @@ export function About() {
 
 						<h2 className="text-[2.5rem] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-8 leading-[1.1]">
 							Donde las ideas <br />
-							<span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
+							<span className="text-brand-accent">
 								toman vuelo.
 							</span>
 						</h2>
 
-						<div className="space-y-6 text-base md:text-lg text-brand-gray font-light leading-relaxed">
+						<div className="space-y-6 text-base md:text-lg text-brand-gray font-light leading-relaxed max-w-[95%] lg:max-w-xl pr-4 text-justify">
 							<p>
-								<strong className="text-white font-semibold">Re3Invent</strong>{" "}
+								<strong className="text-white font-semibold">Re Invent</strong>{" "}
 								es el espacio donde el desarrollo tecnológico se encuentra con
 								la creación estratégica de marca. Ofrecemos soluciones reales
 								que destacan por su funcionalidad, rendimiento y simplicidad.

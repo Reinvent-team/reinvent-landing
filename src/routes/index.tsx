@@ -4,6 +4,7 @@ import { Hero } from "../components/Hero";
 import { Services } from "../components/Services";
 import { Projects } from "../components/Projects";
 import { About } from "../components/About";
+import { MissionVision } from "../components/MissionVision";
 import { Footer } from "../components/Footer";
 import { TechStack } from "../components/TechStack";
 import { Process } from "../components/Process";
@@ -19,6 +20,7 @@ function Index() {
 			<main>
 				<Hero />
 				<About />
+				<MissionVision />
 				<Services />
 				<TechStack />
 				<Projects />

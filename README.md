@@ -73,16 +73,27 @@ bun run build
 
 ```text
 06-Reinvent/
+├── drizzle/              # Migraciones y metadatos de Drizzle ORM
+├── public/
+│   ├── assets/           # Imágenes estáticas y recursos visuales
+│   └── favicon_io/       # Iconos de la aplicación web
 ├── src/
 │   ├── components/       # Componentes reutilizables de React (Header, Footer, Hero, etc.)
 │   ├── routes/           # Rutas del frontend (TanStack Router)
 │   ├── server/           # Lógica del backend (Hono + Bun)
+│   │   ├── db/           # Configuración de BD y esquemas de Drizzle
+│   │   └── index.ts      # Punto de entrada del servidor
+│   ├── shared/           # Código compartido (ej. schemas de Zod)
+│   ├── index.css         # Estilos globales y configuración
 │   ├── main.tsx          # Punto de entrada de React
-│   └── index.css         # Estilos globales y configuración de Tailwind
-├── public/
-│   └── assets/           # Imágenes estáticas y recursos visuales
+│   └── routeTree.gen.ts  # Rutas generadas automáticamente
+├── .env                  # Variables de entorno
+├── biome.json            # Configuración del linter y formateador Biome
+├── docker-compose.yml    # Configuración de contenedores (ej. PostgreSQL)
+├── drizzle.config.ts     # Configuración de Drizzle ORM
 ├── package.json          # Dependencias y scripts
-└── biome.json            # Configuración del linter y formateador Biome
+├── tsconfig.json         # Configuración de TypeScript
+└── vite.config.ts        # Configuración de Vite
 ```
 
 ## 🤝 Contribución

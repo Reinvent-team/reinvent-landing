@@ -1,4 +1,4 @@
-import { Code, Cpu, Layers, MonitorCheck, Settings } from "lucide-react";
+import { Code, Cpu, MonitorCheck, Layers, Settings, Cloud, Database } from "lucide-react";
 
 export function Services() {
 	return (
@@ -9,12 +9,11 @@ export function Services() {
 
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full">
 				<div className="text-center mb-12 md:mb-16">
-					<h2 className="text-[2.5rem] md:text-4xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
+					<h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
 						Soluciones <span className="text-brand-accent">Estratégicas</span>
 					</h2>
-					<p className="text-gray-400 max-w-2xl mx-auto text-base px-4">
-						Diseñamos ecosistemas digitales completos que impulsan el
-						crecimiento y la eficiencia de tu negocio.
+					<p className="text-gray-400 max-w-2xl mx-auto text-base px-4 text-balance">
+						Diseñamos ecosistemas digitales completos que impulsan el crecimiento y la eficiencia de tu negocio.
 					</p>
 				</div>
 
@@ -68,11 +67,10 @@ export function Services() {
 					</div>
 
 					{/* Wide Feature */}
-					<div className="md:col-span-2 glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-1">
-						<div className="flex-1 relative z-10 w-full">
-							<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-semibold text-gray-300 mb-5 md:mb-6">
-								<span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-								Sistemas Conectados
+					<div className="md:col-span-2 glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(31,122,140,0.15)] hover:-translate-y-1">
+						<div className="relative z-10 w-full md:w-3/5">
+							<div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-5 md:mb-6 text-brand-accent group-hover:scale-110 transition-transform duration-500 bg-brand-accent/10 shadow-inner">
+								<Cpu size={26} strokeWidth={2} />
 							</div>
 							<h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
 								Integración de ecosistemas
@@ -83,13 +81,20 @@ export function Services() {
 								sin fricciones.
 							</p>
 						</div>
-						<div className="w-full md:w-40 h-32 md:h-40 rounded-[1.5rem] flex items-center justify-center relative z-10 bg-gradient-to-br from-brand-accent/10 to-transparent border border-brand-accent/20 shrink-0 overflow-hidden">
-							<Cpu
-								size={56}
-								className="text-brand-accent/60 group-hover:text-brand-accent-bright transition-colors duration-500 group-hover:scale-110 relative z-10"
-								strokeWidth={1.5}
-							/>
-							<div className="absolute inset-0 bg-brand-accent/5 group-hover:bg-brand-accent/10 transition-colors duration-500"></div>
+
+						{/* Decorative Connection Diagram */}
+						<div className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 hidden md:flex items-center opacity-50 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+							<div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-brand-primary group-hover:border-brand-accent/40 transition-all duration-700 z-10 relative">
+								<Cloud size={20} className="text-gray-300 group-hover:text-brand-accent-bright transition-colors duration-700" />
+							</div>
+							<div className="w-6 lg:w-10 h-[1px] bg-gradient-to-r from-white/20 to-brand-accent/50 group-hover:w-10 lg:group-hover:w-14 transition-all duration-700 -mx-2"></div>
+							<div className="w-16 h-16 rounded-full border border-brand-accent/50 flex items-center justify-center bg-[#0a0a0a] shadow-[0_0_20px_rgba(31,122,140,0.3)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(31,122,140,0.6)] group-hover:border-brand-accent-bright transition-all duration-700 z-20 relative">
+								<Cpu size={28} className="text-brand-accent group-hover:text-brand-accent-bright transition-colors duration-700" />
+							</div>
+							<div className="w-6 lg:w-10 h-[1px] bg-gradient-to-l from-white/20 to-brand-accent/50 group-hover:w-10 lg:group-hover:w-14 transition-all duration-700 -mx-2"></div>
+							<div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-brand-primary group-hover:border-brand-accent/40 transition-all duration-700 z-10 relative">
+								<Database size={20} className="text-gray-300 group-hover:text-brand-accent-bright transition-colors duration-700" />
+							</div>
 						</div>
 					</div>
 				</div>

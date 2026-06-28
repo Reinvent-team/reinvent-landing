@@ -1,35 +1,60 @@
 import { X, User, Mail, MessageSquare, Send, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 
 export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
+
+	const contactMutation = useMutation({
+		mutationFn: async (formData: { name: string; email: string; message: string }) => {
+			// MIGRACIÓN A VERCEL / RAILWAY:
+			// Aquí estamos utilizando la variable de entorno VITE_API_URL.
+			// En entorno local (vite dev), esto apuntará a http://localhost:3000 (donde corre nuestro backend en la otra carpeta).
+			// Cuando se despliegue a producción, asegúrate de añadir la variable VITE_API_URL
+			// en el dashboard de Vercel apuntando a tu servidor backend en Railway (ej. https://tu-backend-railway.app).
+			const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+			const res = await fetch(`${apiUrl}/api/contact`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formData),
+			});
+			if (!res.ok) throw new Error("Error al enviar");
+			return res.json();
+		},
+		onSuccess: () => {
+			setSubmitted(true);
+			setTimeout(() => {
+				onClose();
+			}, 3000);
+		},
+		onError: (error) => {
+			console.error("Error enviando el formulario:", error);
+			alert("Hubo un error al enviar el mensaje. Por favor intenta de nuevo.");
+		}
+	});
 
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = "hidden";
 		} else {
 			document.body.style.overflow = "auto";
-			if (!isSubmitting) setSubmitted(false);
+			if (!contactMutation.isPending) setSubmitted(false);
 		}
 		return () => {
 			document.body.style.overflow = "auto";
 		};
-	}, [isOpen, isSubmitting]);
+	}, [isOpen, contactMutation.isPending]);
 
 	if (!isOpen) return null;
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setIsSubmitting(true);
-		// Simulate network request
-		setTimeout(() => {
-			setIsSubmitting(false);
-			setSubmitted(true);
-			setTimeout(() => {
-				onClose();
-			}, 3000);
-		}, 1500);
+		const formData = new FormData(e.currentTarget);
+		contactMutation.mutate({
+			name: formData.get("name") as string,
+			email: formData.get("email") as string,
+			message: formData.get("message") as string,
+		});
 	};
 
 	return (
@@ -81,6 +106,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 									<User className="absolute left-4 text-gray-500 group-focus-within:text-brand-accent transition-colors" size={20} />
 									<input 
 										type="text" 
+										name="name"
 										required
 										className="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 md:py-4 pl-12 pr-4 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent/50 focus:ring-2 focus:ring-brand-accent/20 transition-all"
 										placeholder="¿Cómo te llamas?"
@@ -95,6 +121,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 									<Mail className="absolute left-4 text-gray-500 group-focus-within:text-brand-accent transition-colors" size={20} />
 									<input 
 										type="email" 
+										name="email"
 										required
 										className="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 md:py-4 pl-12 pr-4 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent/50 focus:ring-2 focus:ring-brand-accent/20 transition-all"
 										placeholder="tu@correo.com"
@@ -108,7 +135,9 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 								<div className="relative flex items-start">
 									<MessageSquare className="absolute left-4 top-3.5 md:top-4 text-gray-500 group-focus-within:text-brand-accent transition-colors" size={20} />
 									<textarea 
+										name="message"
 										required
+										minLength={10}
 										rows={3}
 										className="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 md:py-4 pl-12 pr-4 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent/50 focus:ring-2 focus:ring-brand-accent/20 transition-all resize-none"
 										placeholder="Cuéntanos brevemente sobre tu idea..."
@@ -119,10 +148,10 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 							{/* Submit Button */}
 							<button 
 								type="submit" 
-								disabled={isSubmitting}
+								disabled={contactMutation.isPending}
 								className="group w-full py-3.5 md:py-4 bg-white text-brand-primary rounded-2xl font-black hover:bg-brand-accent-bright hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] flex justify-center items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed mt-4 overflow-hidden relative"
 							>
-								{isSubmitting ? (
+								{contactMutation.isPending ? (
 									<span className="w-5 h-5 md:w-6 md:h-6 border-2 border-brand-primary border-t-transparent rounded-full animate-spin"></span>
 								) : (
 									<>
