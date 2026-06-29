@@ -2,6 +2,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
@@ -19,5 +20,6 @@ declare module "@tanstack/react-router" {
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
+		<SpeedInsights />
 	</React.StrictMode>,
 );
