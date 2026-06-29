@@ -13,8 +13,14 @@ export function Hero() {
 			</div>
 
 			{/* Ambient Light / Glowing orbs - Responsive sizing (Optimized for mobile GPU) */}
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] md:w-[70vw] h-[100vw] md:h-[50vw] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2563eb]/40 via-[#2563eb]/10 to-transparent pointer-events-none mix-blend-screen animate-pulse duration-[8000ms]"></div>
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[50vw] h-[70vw] md:h-[40vw] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 via-white/5 to-transparent pointer-events-none mix-blend-screen"></div>
+			<div 
+				className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] md:w-[90vw] h-[130vw] md:h-[70vw] rounded-full pointer-events-none mix-blend-screen animate-pulse duration-[8000ms]"
+				style={{ background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.15) 0%, rgba(37,99,235,0.05) 40%, transparent 75%)' }}
+			></div>
+			<div 
+				className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] md:w-[60vw] h-[90vw] md:h-[50vw] rounded-full pointer-events-none mix-blend-screen"
+				style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 40%, transparent 75%)' }}
+			></div>
 
 			{/* Tech Grid Pattern */}
 			<div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNTQgMzBoNmY2djZoLTZ2LTZ6TTEwIDIwaDEwdjEwSDEwVjIweiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] opacity-30 md:opacity-40 pointer-events-none"></div>
