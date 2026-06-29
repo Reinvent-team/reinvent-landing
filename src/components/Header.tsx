@@ -65,7 +65,7 @@ export function Header() {
 				</Link>
 
 				{/* Desktop Navigation */}
-				<nav className="hidden md:flex gap-10 text-xl font-semibold tracking-wide items-center">
+				<nav className="hidden lg:flex gap-10 text-xl font-semibold tracking-wide items-center">
 					<Link
 						to="/"
 						onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -87,7 +87,7 @@ export function Header() {
 					))}
 				</nav>
 
-				<div className="hidden md:block z-[60]">
+				<div className="hidden lg:block z-[60]">
 					<a
 						href="#contact"
 						onClick={handleNavClick}
@@ -100,7 +100,7 @@ export function Header() {
 				{/* Mobile Menu Toggle Button */}
 				<button
 					onClick={toggleMobileMenu}
-					className="md:hidden text-white p-2 z-[60] focus:outline-none"
+					className="lg:hidden text-white p-2 z-[60] focus:outline-none"
 					aria-label="Toggle Menu"
 				>
 					{isMobileMenuOpen ? (
@@ -113,16 +113,19 @@ export function Header() {
 
 			{/* Mobile Navigation Menu */}
 			<div
-				className={`fixed inset-0 bg-brand-primary/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center min-h-screen transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-full invisible'}`}
+				className={`fixed inset-0 bg-brand-primary/95 backdrop-blur-xl z-50 flex flex-col min-h-screen transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-full invisible'} overflow-y-auto`}
 			>
-				<nav className="flex flex-col gap-8 items-center text-3xl font-semibold tracking-wide">
+				{/* Top Spacer */}
+				<div className="flex-1 min-h-[2rem]"></div>
+
+				<nav className="relative z-10 flex-none flex flex-col items-center text-center text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide w-4/5 max-w-xs sm:max-w-sm py-4 mx-auto">
 					<Link
 						to="/"
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" });
 							setIsMobileMenuOpen(false);
 						}}
-						className="text-brand-gray hover:text-white transition-colors duration-300"
+						className="text-brand-gray hover:text-white transition-colors duration-300 w-full pb-4 sm:pb-5 border-b border-white/10"
 					>
 						Inicio
 					</Link>
@@ -131,19 +134,30 @@ export function Header() {
 							key={link.name}
 							href={link.href}
 							onClick={handleNavClick}
-							className="text-brand-gray hover:text-white transition-colors duration-300"
+							className="text-brand-gray hover:text-white transition-colors duration-300 w-full py-4 sm:py-5 border-b border-white/10"
 						>
 							{link.name}
 						</a>
 					))}
-					<a
-						href="#contact"
-						onClick={handleNavClick}
-						className="mt-4 px-8 py-3 rounded-full border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-primary transition-all duration-300"
-					>
-						Contacto
-					</a>
+					<div className="mt-6 sm:mt-8">
+						<a
+							href="#contact"
+							onClick={handleNavClick}
+							className="inline-block px-8 sm:px-10 py-3 sm:py-4 text-xl sm:text-2xl rounded-full border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-primary transition-all duration-300"
+						>
+							Contacto
+						</a>
+					</div>
 				</nav>
+
+				{/* Isotipo Below */}
+				<div className="flex-1 flex items-end justify-center pb-8 sm:pb-12 min-h-[6rem] pointer-events-none z-10">
+					<img
+						src="/assets/images/ISOTIPO_PNG (6).png"
+						alt="Re-invent isotipo"
+						className="w-10 sm:w-14 md:w-16 h-auto brightness-0 invert opacity-90"
+					/>
+				</div>
 			</div>
 		</header>
 	);

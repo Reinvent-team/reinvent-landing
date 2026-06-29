@@ -3,7 +3,7 @@ import {
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const MOCK_PROJECTS = [
@@ -36,6 +36,38 @@ const MOCK_PROJECTS = [
 
 export function Projects() {
 	const [activeIndex, setActiveIndex] = useState(1);
+	const [touchStart, setTouchStart] = useState<number | null>(null);
+	const [isDesktop, setIsDesktop] = useState(true);
+	const [isTablet, setIsTablet] = useState(false);
+
+	const springTransition = { type: "spring" as const, stiffness: 250, damping: 30, mass: 1 };
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsTablet(window.innerWidth >= 1024 && window.innerWidth < 1280);
+			setIsDesktop(window.innerWidth >= 1280);
+		};
+		handleResize();
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	const handleTouchStart = (e: React.TouchEvent) => {
+		setTouchStart(e.targetTouches[0].clientX);
+	};
+
+	const handleTouchEnd = (e: React.TouchEvent) => {
+		if (touchStart === null) return;
+		const touchEnd = e.changedTouches[0].clientX;
+		const distance = touchStart - touchEnd;
+
+		if (distance > 50 && activeIndex < MOCK_PROJECTS.length - 1) {
+			setActiveIndex(activeIndex + 1);
+		} else if (distance < -50 && activeIndex > 0) {
+			setActiveIndex(Math.max(0, activeIndex - 1));
+		}
+		setTouchStart(null);
+	};
 
 	return (
 		<section id="projects" className="py-16 md:py-20 relative border-t border-white/5">
@@ -45,7 +77,7 @@ export function Projects() {
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 				<div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-12 gap-6 md:gap-10">
 					<div>
-						<h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
 							Proyectos <span className="text-brand-accent">&</span> Producción
 						</h2>
 						<p className="text-gray-400 text-base md:text-lg max-w-xl font-light">
@@ -77,35 +109,60 @@ export function Projects() {
 					</div>
 				</div>
 
-				<div className="relative flex items-center justify-center h-[560px] md:h-[500px] overflow-hidden w-full max-w-[100vw]">
-					<div className="flex items-center justify-center gap-4 md:gap-8 w-full h-full perspective-1000 px-4">
+				<div
+					className="relative flex items-center justify-center h-[460px] sm:h-[560px] lg:h-[500px] overflow-hidden w-full max-w-[100vw] touch-pan-y"
+					onTouchStart={handleTouchStart}
+					onTouchEnd={handleTouchEnd}
+				>
+					<div className="flex items-center justify-center gap-0 lg:gap-8 xl:gap-12 w-full h-full perspective-1000 px-0 sm:px-4">
 						{MOCK_PROJECTS.map((project, index) => {
 							const isActive = index === activeIndex;
-							// Determinar si debe ser visible en pantallas pequeñas
-							const isVisibleOnMobile = isActive || (index === activeIndex - 1 && activeIndex > 0) || (index === activeIndex + 1 && activeIndex < MOCK_PROJECTS.length - 1);
+							
+							// Tablet window logic: only 2 cards visible
+							const startIndexTablet = Math.min(activeIndex, Math.max(0, MOCK_PROJECTS.length - 2));
+							const isVisibleTablet = index >= startIndexTablet && index <= startIndexTablet + 1;
+							
+							let opacity = 0;
+							if (isActive) opacity = 1;
+							else if (isDesktop) opacity = 0.4;
+							else if (isTablet) opacity = isVisibleTablet ? 0.4 : 0;
+							else opacity = 0;
+
+							let xPos = 0;
+							if (!isActive) {
+								if (isDesktop) xPos = 0;
+								else if (isTablet) xPos = isVisibleTablet ? 0 : (index < activeIndex ? -200 : 200);
+								else xPos = index < activeIndex ? -200 : 200;
+							}
 
 							return (
 								<motion.div
 									key={project.id}
-									layout="position"
+									layout
 									initial={false}
 									animate={{
-										opacity: isActive ? 1 : 0.4,
-										scale: isActive ? 1 : 0.9,
+										opacity,
+										scale: isActive ? 1 : (isDesktop || isTablet ? 0.9 : 0.8),
 										zIndex: isActive ? 20 : 10,
-										display: !isVisibleOnMobile && typeof window !== 'undefined' && window.innerWidth < 768 ? 'none' : 'flex'
+										x: xPos
 									}}
-									transition={{ type: "spring", stiffness: 400, damping: 40, mass: 0.8 }}
+									transition={springTransition}
 									className={`glass-card rounded-[2rem] overflow-hidden flex flex-col cursor-pointer shrink-0 will-change-transform
 										${isActive
-											? "w-[85vw] sm:w-[450px] h-[520px] md:h-[480px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-brand-accent/40"
-											: "w-[0px] md:w-[300px] h-[0px] md:h-[400px] border-white/10 hover:opacity-80"
+											? "relative w-[84vw] max-w-[320px] sm:max-w-none sm:w-[450px] lg:w-[400px] xl:w-[450px] h-[420px] sm:h-[480px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-brand-accent/40"
+											: `h-[420px] lg:h-[400px] border-transparent lg:border-white/10 hover:opacity-80 pointer-events-none lg:pointer-events-auto ${
+												isDesktop
+													? 'relative xl:w-[300px]'
+													: (isTablet
+														? (isVisibleTablet ? 'relative lg:w-[280px]' : 'absolute w-[84vw] max-w-[320px] sm:max-w-none sm:w-[450px] opacity-0 pointer-events-none')
+														: 'absolute w-[84vw] max-w-[320px] sm:max-w-none sm:w-[450px]')
+											}`
 										}
 									`}
 									onClick={() => setActiveIndex(index)}
 								>
 									{/* Image Container */}
-									<div className="h-[50%] md:h-[55%] w-full relative flex items-center justify-center overflow-hidden border-b border-white/5 pointer-events-none">
+									<motion.div layout transition={springTransition} className="h-[50%] md:h-[55%] w-full relative flex items-center justify-center overflow-hidden border-b border-white/5 pointer-events-none">
 										<motion.img
 											src={project.image}
 											alt={project.title}
@@ -116,10 +173,10 @@ export function Projects() {
 											}}
 											transition={{ duration: 0.5 }}
 										/>
-									</div>
+									</motion.div>
 
 									{/* Content */}
-									<div className="p-6 md:p-8 flex-1 flex flex-col bg-brand-secondary/90 pointer-events-none">
+									<motion.div layout transition={springTransition} className="p-6 md:p-8 flex-1 flex flex-col bg-brand-secondary/90 pointer-events-none">
 										<div className="flex flex-wrap gap-2 mb-4">
 											{project.tags.map((tag) => (
 												<span
@@ -135,10 +192,13 @@ export function Projects() {
 										</h3>
 
 										<motion.div
-											animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0 }}
-											className="overflow-hidden"
+											layout
+											initial={false}
+											animate={{ opacity: isActive ? 1 : 0 }}
+											transition={springTransition}
+											className={`overflow-hidden ${isActive ? 'h-auto mt-2' : 'h-0 mt-0'}`}
 										>
-											<p className="text-sm md:text-base text-gray-400 mb-6 flex-1 leading-relaxed font-light pointer-events-auto">
+											<p className="text-sm md:text-base text-gray-400 flex-1 leading-relaxed font-light pointer-events-auto pb-4">
 												{project.description}
 											</p>
 										</motion.div>
@@ -149,7 +209,7 @@ export function Projects() {
 												<span>{project.status}</span>
 											</div>
 										</div>
-									</div>
+									</motion.div>
 								</motion.div>
 							);
 						})}
@@ -159,7 +219,7 @@ export function Projects() {
 				<div className="mt-10 md:mt-12 text-center">
 					<a
 						href="http://localhost:5174"
-						className="inline-block w-full sm:w-auto px-8 md:px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all text-white backdrop-blur-sm text-base md:text-lg"
+						className="inline-block w-auto px-8 md:px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all text-white backdrop-blur-sm text-base md:text-lg"
 					>
 						Ver portafolio completo
 					</a>

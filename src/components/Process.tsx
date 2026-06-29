@@ -12,7 +12,7 @@ export function Process() {
 				<div id="contact" className="absolute -top-24 w-full"></div>
 
 				<div className="text-center mb-16 md:mb-24">
-					<h2 className="text-[2.5rem] md:text-5xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight">
 						Nuestro <span className="text-brand-accent">Proceso</span>
 					</h2>
 					<p className="text-brand-gray max-w-2xl mx-auto text-base md:text-lg font-light px-4 text-balance">

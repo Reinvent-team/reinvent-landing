@@ -9,7 +9,7 @@ export function Services() {
 
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full">
 				<div className="text-center mb-12 md:mb-16">
-					<h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-5 leading-tight">
 						Soluciones <span className="text-brand-accent">Estratégicas</span>
 					</h2>
 					<p className="text-gray-400 max-w-2xl mx-auto text-base px-4 text-balance">
@@ -18,9 +18,9 @@ export function Services() {
 				</div>
 
 				{/* Bento Box Grid */}
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-6">
 					{/* Large Main Feature */}
-					<div className="md:col-span-2 glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-1">
+					<div className="md:col-span-2 glass-card rounded-[2rem] p-5 sm:p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-1">
 						<div className="absolute inset-0 bg-gradient-to-br from-brand-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 						<div className="relative z-10">
 							<div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-5 md:mb-6 text-brand-accent group-hover:scale-110 transition-transform duration-500 bg-brand-accent/10 shadow-inner">
@@ -39,7 +39,7 @@ export function Services() {
 					</div>
 
 					{/* Standard Feature 1 */}
-					<div className="glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.15)] hover:-translate-y-1">
+					<div className="glass-card rounded-[2rem] p-5 sm:p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.15)] hover:-translate-y-1">
 						<div className="relative z-10">
 							<div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-5 md:mb-6 text-purple-400 group-hover:scale-110 transition-transform duration-500 bg-purple-500/10 shadow-inner">
 								<Settings size={26} strokeWidth={2} />
@@ -53,7 +53,7 @@ export function Services() {
 					</div>
 
 					{/* Standard Feature 2 */}
-					<div className="glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-teal-500/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(20,184,166,0.15)] hover:-translate-y-1">
+					<div className="glass-card rounded-[2rem] p-5 sm:p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-teal-500/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(20,184,166,0.15)] hover:-translate-y-1">
 						<div className="relative z-10">
 							<div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-5 md:mb-6 text-teal-400 group-hover:scale-110 transition-transform duration-500 bg-teal-500/10 shadow-inner">
 								<MonitorCheck size={26} strokeWidth={2} />
@@ -67,7 +67,7 @@ export function Services() {
 					</div>
 
 					{/* Wide Feature */}
-					<div className="md:col-span-2 glass-card rounded-[2rem] p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(31,122,140,0.15)] hover:-translate-y-1">
+					<div className="md:col-span-2 glass-card rounded-[2rem] p-5 sm:p-6 md:p-8 group overflow-hidden relative border border-white/5 hover:border-brand-accent/30 transition-all duration-500 hover:shadow-[0_10px_40px_-10px_rgba(31,122,140,0.15)] hover:-translate-y-1">
 						<div className="relative z-10 w-full md:w-3/5">
 							<div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-5 md:mb-6 text-brand-accent group-hover:scale-110 transition-transform duration-500 bg-brand-accent/10 shadow-inner">
 								<Cpu size={26} strokeWidth={2} />

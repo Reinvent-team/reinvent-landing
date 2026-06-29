@@ -12,6 +12,8 @@ export function Footer() {
 				<img 
 					src="/assets/images/ISOTIPO_PNG (6).png" 
 					alt="" 
+					loading="lazy"
+					decoding="async"
 					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] md:w-[200px] h-auto object-contain opacity-[0.02] pointer-events-none z-0" 
 				/>
 
@@ -20,7 +22,7 @@ export function Footer() {
 					{/* Brand & Socials */}
 					<div className="flex flex-col items-center md:items-start text-center md:text-left">
 						<div className="flex items-center justify-center md:justify-start mb-6">
-							<img src="/assets/images/Recurso 6.png" alt="Re-invent" className="h-6 md:h-7 w-auto object-contain drop-shadow-md relative z-10" />
+							<img src="/assets/images/Recurso 6.png" alt="Re-invent" loading="lazy" decoding="async" className="h-6 md:h-7 w-auto object-contain drop-shadow-md relative z-10" />
 						</div>
 						<p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-sm font-light">
 							Diseñamos y desarrollamos soluciones digitales innovadoras que impulsan el crecimiento y la eficiencia de tu negocio con tecnología de vanguardia.
