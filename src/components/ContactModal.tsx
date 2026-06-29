@@ -69,8 +69,8 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 			<div className="relative w-full max-w-lg glass-card rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_0_80px_rgba(37,99,235,0.15)] transform transition-all duration-500 border border-white/10 bg-brand-primary/95">
 				
 				{/* Glow Effects */}
-				<div className="absolute -top-32 -right-32 w-64 h-64 bg-brand-accent/20 rounded-full blur-[80px] pointer-events-none"></div>
-				<div className="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accent-bright/10 rounded-full blur-[80px] pointer-events-none"></div>
+				<div className="absolute -top-32 -right-32 w-64 h-64 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/20 via-brand-accent/5 to-transparent pointer-events-none"></div>
+				<div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent-bright/10 via-brand-accent-bright/5 to-transparent pointer-events-none"></div>
 
 				{/* Header */}
 				<div className="flex justify-between items-center px-6 md:px-8 py-5 md:py-6 border-b border-white/5 relative z-10">

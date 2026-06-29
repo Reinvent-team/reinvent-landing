@@ -57,7 +57,7 @@ export function Process() {
 
 				{/* CTA / Contact */}
 				<div className="glass-card rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 text-center md:text-left relative overflow-hidden border border-white/10 group hover:border-brand-accent/30 transition-colors duration-500">
-					<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-2xl bg-brand-accent/5 group-hover:bg-brand-accent/10 transition-colors duration-700 blur-[100px] pointer-events-none"></div>
+					<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-2xl bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/10 via-brand-accent/5 to-transparent transition-colors duration-700 pointer-events-none"></div>
 					<div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
 						<div className="w-full lg:w-auto">
 							<h2 className="text-[2rem] md:text-4xl font-extrabold mb-4 leading-tight text-white">

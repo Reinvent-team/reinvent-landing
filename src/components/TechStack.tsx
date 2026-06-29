@@ -25,7 +25,7 @@ const TECHNOLOGIES = [
 export function TechStack() {
 	return (
 		<section className="py-16 md:py-24 relative border-y border-white/5 overflow-hidden">
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-32 bg-brand-accent/5 blur-[80px]"></div>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-32 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/5 via-brand-accent/5 to-transparent"></div>
 
 			<div className="max-w-[100vw] mx-auto relative z-10">
 				<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center tracking-tight mb-8 md:mb-12 text-white px-4">

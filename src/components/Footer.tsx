@@ -6,7 +6,7 @@ export function Footer() {
 		<>			{/* Actual Footer */}
 			<footer className="bg-[#030303] relative z-20 border-t border-white/5 overflow-hidden">
 				{/* Very subtle glow for the footer */}
-				<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
+				<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/5 via-brand-accent/5 to-transparent pointer-events-none"></div>
 
 				{/* Watermark Isotype */}
 				<img 

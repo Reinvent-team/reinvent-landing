@@ -4,8 +4,8 @@ export function Services() {
 	return (
 		<section id="services" className="pt-20 pb-20 md:pt-24 md:pb-24 relative">
 			{/* Suble background glows */}
-			<div className="absolute top-1/2 left-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-brand-accent/5 rounded-full blur-[80px] md:blur-[120px] -translate-y-1/2 pointer-events-none"></div>
-			<div className="absolute top-0 right-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-purple-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+			<div className="absolute top-1/2 left-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/5 via-brand-accent/5 to-transparent -translate-y-1/2 pointer-events-none"></div>
+			<div className="absolute top-0 right-0 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/5 via-purple-500/5 to-transparent pointer-events-none"></div>
 
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full">
 				<div className="text-center mb-12 md:mb-16">

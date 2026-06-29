@@ -6,7 +6,7 @@ export function About() {
 	return (
 		<section id="about" className="min-h-[100vh] flex flex-col justify-center py-16 md:py-32 relative overflow-hidden">
 			{/* Decorative Elements */}
-			<div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-brand-accent/5 rounded-full blur-[80px] md:blur-[120px]"></div>
+			<div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/5 via-brand-accent/5 to-transparent"></div>
 
 			<div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 				<div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">

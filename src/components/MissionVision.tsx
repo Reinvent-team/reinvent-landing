@@ -4,7 +4,7 @@ export function MissionVision() {
 	return (
 		<section className="relative border-t border-white/10 bg-brand-secondary overflow-hidden">
 			{/* Decorative background */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/5 via-brand-accent/5 to-transparent pointer-events-none"></div>
 
 			<div className="max-w-7xl mx-auto flex flex-col md:flex-row relative z-10">
 				{/* Misión */}
