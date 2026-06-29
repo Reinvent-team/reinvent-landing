@@ -46,7 +46,7 @@ export function About() {
 
 							<button
 								onClick={() => setShowMore(!showMore)}
-								className="md:hidden text-brand-accent font-semibold text-sm hover:opacity-80 transition-opacity mt-4 mx-auto block"
+								className="md:hidden text-brand-accent-bright font-semibold text-sm hover:opacity-80 transition-opacity mt-4 mx-auto block"
 							>
 								{showMore ? "Ver menos ↑" : "Ver más ↓"}
 							</button>

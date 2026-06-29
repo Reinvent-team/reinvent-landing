@@ -44,7 +44,7 @@ export function TechStack() {
 								className="flex flex-col items-center justify-center text-white/30 hover:text-brand-accent-bright hover:scale-125 hover:-translate-y-2 transition-all duration-300 w-[80px] md:w-[120px] mx-6 md:mx-10"
 								title={tech.name}
 							>
-								<tech.Icon className="w-12 h-12 md:w-20 md:h-20 drop-shadow-lg" />
+								<tech.Icon aria-label={tech.name} className="w-12 h-12 md:w-20 md:h-20 drop-shadow-lg" />
 							</div>
 						))}
 					</div>

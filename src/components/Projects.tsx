@@ -89,6 +89,7 @@ export function Projects() {
 						<button
 							type="button"
 							className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent/20 hover:border-brand-accent/50 hover:text-brand-accent-bright transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-white/20 disabled:hover:text-white text-white group"
+							aria-label="Proyecto anterior"
 							onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
 							disabled={activeIndex === 0}
 						>
@@ -97,6 +98,7 @@ export function Projects() {
 						<button
 							type="button"
 							className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent/20 hover:border-brand-accent/50 hover:text-brand-accent-bright transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:border-white/20 disabled:hover:text-white text-white group"
+							aria-label="Proyecto siguiente"
 							onClick={() =>
 								setActiveIndex(
 									Math.min(MOCK_PROJECTS.length - 1, activeIndex + 1),
